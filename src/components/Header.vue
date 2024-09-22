@@ -1,15 +1,15 @@
 <template>
   <header :class="{ 'scrolled': scrolled }">
     <div class="logo">
-      <img src="../assets/logo.svg" alt="SurgeVue Logo" />
+      <img src="@/assets/logo.svg" alt="SurgeVue Logo" />
       <span>SurgeVue</span>
     </div>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact" class="btn">Contact</a></li>
+        <li><a href="#home" aria-label="Go to Home">Home</a></li>
+        <li><a href="#features" aria-label="View Features">Features</a></li>
+        <li><a href="#about" aria-label="Learn About Us">About</a></li>
+        <li><a href="#contact" class="btn" aria-label="Contact Us">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -21,17 +21,17 @@ export default {
   data() {
     return {
       scrolled: false
-    }
+    };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll);
   },
   unmounted() {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     handleScroll() {
-      this.scrolled = window.scrollY > 50
+      this.scrolled = window.scrollY > 50;
     }
   }
 }
@@ -47,7 +47,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
 }
 
@@ -96,3 +96,4 @@ nav ul li a.btn {
   color: white;
 }
 </style>
+
