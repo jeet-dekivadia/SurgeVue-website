@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ObserveVisibility } from 'vue-observe-visibility'
+import { ObserveVisibility } from 'vue-observe-visibility';
 
 export default {
   name: 'Features',
