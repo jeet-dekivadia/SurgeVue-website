@@ -3,7 +3,7 @@
     <h2>Key Features</h2>
     <div class="feature-grid">
       <div v-for="feature in features" :key="feature.title" class="feature-card" v-observe-visibility="onVisibilityChange">
-        <i :class="feature.icon"></i>
+        <i :class="feature.icon" aria-hidden="true"></i>
         <h3>{{ feature.title }}</h3>
         <p>{{ feature.description }}</p>
       </div>
@@ -82,7 +82,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-  padding: 0 50px;
+  padding: 0 20px; /* Adjusted for smaller screens */
 }
 
 .feature-card {
@@ -115,5 +115,16 @@ h2 {
 .feature-card p {
   font-size: 1rem;
   color: #666;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
 }
 </style>
