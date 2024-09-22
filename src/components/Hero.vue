@@ -4,57 +4,85 @@
       <h1>SurgeVue</h1>
       <p>Neurosurgeries made Safe!</p>
       <a href="#features" class="btn">Learn More</a>
+      <div v-if="error" class="error-message">{{ error }}</div>
     </div>
     <div ref="brainModel" class="brain-model"></div>
   </section>
 </template>
 
 <script>
-import * as THREE from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 export default {
   name: 'Hero',
+  data() {
+    return {
+      error: null,
+      renderer: null,
+      scene: null,
+      camera: null,
+    };
+  },
   mounted() {
-    this.initThreeJS()
+    this.initThreeJS();
+    window.addEventListener('resize', this.onWindowResize);
+  },
+  beforeDestroy() {
+    this.cleanup();
+    window.removeEventListener('resize', this.onWindowResize);
   },
   methods: {
     initThreeJS() {
-      const scene = new THREE.Scene()
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+      this.scene = new THREE.Scene();
+      this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       
-      renderer.setSize(window.innerWidth / 2, window.innerHeight / 2)
-      this.$refs.brainModel.appendChild(renderer.domElement)
+      this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+      this.$refs.brainModel.appendChild(this.renderer.domElement);
 
-      const loader = new GLTFLoader()
+      const loader = new GLTFLoader();
       loader.load(
         '/brain_model.gltf',
         (gltf) => {
-          const brain = gltf.scene
-          scene.add(brain)
+          const brain = gltf.scene;
+          this.scene.add(brain);
           
-          const light = new THREE.PointLight(0xffffff, 1, 100)
-          light.position.set(10, 10, 10)
-          scene.add(light)
+          const light = new THREE.PointLight(0xffffff, 1, 100);
+          light.position.set(10, 10, 10);
+          this.scene.add(light);
 
-          camera.position.z = 5
+          this.camera.position.z = 5;
 
-          function animate() {
-            requestAnimationFrame(animate)
-            brain.rotation.y += 0.005
-            renderer.render(scene, camera)
-          }
-          animate()
+          this.animate(brain);
         },
         undefined,
         (error) => {
-          console.error('An error occurred loading the 3D model:', error)
+          this.error = 'An error occurred loading the 3D model.';
+          console.error('An error occurred loading the 3D model:', error);
         }
-      )
-    }
-  }
-}
+      );
+    },
+    animate(brain) {
+      const animate = () => {
+        requestAnimationFrame(animate);
+        brain.rotation.y += 0.005;
+        this.renderer.render(this.scene, this.camera);
+      };
+      animate();
+    },
+    onWindowResize() {
+      this.camera.aspect = window.innerWidth / window.innerHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+    },
+    cleanup() {
+      if (this.renderer) {
+        this.renderer.dispose();
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -85,5 +113,10 @@ p {
 .brain-model {
   width: 50%;
   height: 100%;
+}
+
+.error-message {
+  color: red;
+  margin-top: 20px;
 }
 </style>
