@@ -13,15 +13,15 @@
     "vue-router": "^4.1.6",
     "three": "^0.152.2",
     "gsap": "^3.11.5",
-    "vue-observe-visibility": "^0.5.2"  // Add this for visibility detection
+    "vue-observe-visibility": "^0.5.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
     "vite": "^4.3.2",
-    "terser": "^5.15.0",  // Required for minification
+    "terser": "^5.15.0",
     "eslint": "^8.24.0",
     "eslint-plugin-vue": "^9.0.0",
     "prettier": "^2.7.1",
-    "rollup": "^3.20.0"    // Ensure rollup is included
+    "rollup": "^3.20.0"
   }
 }
