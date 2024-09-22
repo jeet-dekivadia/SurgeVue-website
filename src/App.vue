@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Hero from './components/Hero.vue'
-import Features from './components/Features.vue'
-import About from './components/About.vue'
-import Footer from './components/Footer.vue'
+import Header from './components/Header.vue';
+import Hero from './components/Hero.vue';
+import Features from './components/Features.vue';
+import About from './components/About.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
@@ -24,10 +24,10 @@ export default {
     About,
     Footer
   }
-}
+};
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
