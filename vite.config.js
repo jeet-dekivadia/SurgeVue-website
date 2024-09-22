@@ -16,15 +16,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    minify: 'terser',
+    minify: 'terser', // Minification method
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
       },
     },
-    rollupOptions: {
-      external: ['vue-observe-visibility'], // Add this line
-    },
   },
 })
+
