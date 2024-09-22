@@ -8,24 +8,24 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#home" aria-label="Go to Home">Home</a></li>
+          <li><a href="#features" aria-label="View Features">Features</a></li>
+          <li><a href="#about" aria-label="Learn About Us">About</a></li>
+          <li><a href="#contact" aria-label="Contact Us">Contact</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>Contact Us</h3>
-        <p>Email: info@surgevue.com</p>
-        <p>Phone: +1 (123) 456-7890</p>
+        <p>Email: <a href="mailto:info@surgevue.com">info@surgevue.com</a></p>
+        <p>Phone: <a href="tel:+11234567890">+1 (123) 456-7890</a></p>
       </div>
       <div class="footer-section">
         <h3>Follow Us</h3>
         <div class="social-icons">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
